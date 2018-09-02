@@ -1,0 +1,21 @@
+@startuml
+skinparam componentStyle uml2
+scale 1.75
+
+package "UI" #e97070 {
+ }
+package "UC" #8de970 {
+
+}
+package "DB" #70c0e9{
+}
+UI ..> UC
+UC ..> DB
+
+
+note right of UI: Prösentation (View)
+note right of UC: Anwendungslogik (Controller)
+note right of DB: Datenhaltung (Model)
+
+
+@enduml

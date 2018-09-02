@@ -1,0 +1,46 @@
+@startuml
+skinparam componentStyle uml2
+scale 0.9
+
+node "internal" {
+package "UI" #e97070 {
+[UI-Component]
+ }
+package "UC" #8de970 {
+[UC-Component]
+}
+package "DB" #70c0e9{
+[DB-Component]
+}
+}
+UI ..> UC
+UC ..> DB
+
+node "external" {
+[edu.hm.hafner] <- [DB-Component]
+[java.io] <- [DB-Component]
+[java.util] <- [DB-Component]
+[org.springframework] <- [DB-Component]
+
+[java.util] <- [UC-Component]
+[edu.hm.hafner] <- [UC-Component]
+[org.springframework] <- [UC-Component]
+
+
+[org.springframework] <- [UI-Component]
+[com.google.code.gson] <- [UI-Component]
+[edu.hm.hafner] <- [UI-Component]
+
+}
+
+note bottom of external
+Please note:
+We decided to not list any declared,
+but unused dependencies.
+
+We would have prefered to use "<<internal/external>>"
+over "internal/external" in our groups, but have
+been restricted by plantUML syntax.
+end note
+
+@enduml

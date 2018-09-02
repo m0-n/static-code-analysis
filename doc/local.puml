@@ -1,0 +1,23 @@
+@startuml
+
+
+node localhost <<device>>{
+
+node JVM <<execution environment>> {
+ node Tomcat <<LocalApplicationServer>>
+ artifact AnalysisDashboard.jar <<artefact>>
+}
+
+node Browser <<execution environment>>  {
+artifact details.js
+node interpreter <<service>>
+}
+
+}
+interpreter --> Tomcat
+Tomcat --> interpreter
+
+AnalysisDashboard.jar --> Tomcat
+details.js  --> interpreter
+
+@enduml

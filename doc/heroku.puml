@@ -1,0 +1,19 @@
+@startuml
+node Client-Side <<device>>  {
+artifact details.js
+node interpreter <<device>>
+}
+
+node Server-Side <<device>>  {
+  cloud Heroku <<ApplicationServer>>
+  artifact AnalysisDashboard.jar <<artefact>>
+}
+
+interpreter --> Heroku
+Heroku --> interpreter
+
+AnalysisDashboard.jar --> Heroku
+details.js  --> interpreter
+
+@enduml
+
